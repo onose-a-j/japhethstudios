@@ -1,0 +1,843 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#FFFFFF" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0A0A0A" media="(prefers-color-scheme: dark)">
+<title>Japheth Studios</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,200..800&family=Instrument+Sans:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap">
+<style>
+/* Layout: black-and-white press sheet with real depth: a layered hero stage, elevated windows, an inverse band and outlined type.
+   Mirrors the Figma file "Japheth Studios — Landing Page" (light/* and dark/* tokens, Elevation/* effect styles). */
+:root {
+  --bg: #FFFFFF;
+  --surface: #F2F2F2;
+  --fg: #0A0A0A;
+  --muted: #5C5C5C;
+  --rule: #D9D9D9;
+  --inverse-bg: #0A0A0A;
+  --inverse-fg: #FFFFFF;
+  --dot: rgba(10, 10, 10, 0.13);
+  --rim: rgba(0, 0, 0, 0);
+  --sh-op: 0.22;
+  --shadow-win: 0 1px 2px rgba(0,0,0,.06), 0 12px 24px -6px rgba(0,0,0,.10), 0 40px 80px -24px rgba(0,0,0,.24);
+  --shadow-card: 0 1px 2px rgba(0,0,0,.05), 0 18px 40px -12px rgba(0,0,0,.14);
+  --shadow-btn: inset 0 1px 0 rgba(255,255,255,.14), 0 8px 18px -8px rgba(0,0,0,.45);
+  --display: "Bricolage Grotesque", "Arial Narrow", system-ui, sans-serif;
+  --body: "Instrument Sans", "Helvetica Neue", Arial, sans-serif;
+  --mono: "JetBrains Mono", ui-monospace, "Cascadia Mono", Consolas, monospace;
+  --grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .5 0 0 0 0 .5 0 0 0 0 .5 0 0 0 1 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+  --wrap: 1200px;
+  --gutter: clamp(16px, 4vw, 40px);
+  /* Radii */
+  --r-sm: 14px;
+  --r-md: 22px;
+  --r-lg: 28px;
+  --r-xl: clamp(28px, 4vw, 40px);
+  --pill: 999px;
+  /* Liquid glass: translucent fill, frosted backdrop, a bright top edge and a soft drop */
+  --glass: linear-gradient(180deg, rgba(255,255,255,.74), rgba(255,255,255,.46));
+  --glass-blur: blur(22px) saturate(180%);
+  --glass-shadow: inset 0 1px 0 rgba(255,255,255,.95), inset 0 -1px 0 rgba(255,255,255,.4), inset 0 0 0 1px rgba(10,10,10,.07), 0 1px 2px rgba(0,0,0,.04), 0 14px 34px -14px rgba(0,0,0,.2);
+  --glass-inv: linear-gradient(180deg, color-mix(in srgb, var(--inverse-fg) 12%, transparent), color-mix(in srgb, var(--inverse-fg) 4%, transparent));
+  --glass-inv-shadow: inset 0 1px 0 color-mix(in srgb, var(--inverse-fg) 24%, transparent), inset 0 0 0 1px color-mix(in srgb, var(--inverse-fg) 12%, transparent);
+  /* Soft tonal pools behind the page so the glass has something to frost */
+  --ambient: radial-gradient(42% 36% at 10% 6%, color-mix(in srgb, var(--fg) 7%, transparent), transparent 70%), radial-gradient(36% 30% at 94% 40%, color-mix(in srgb, var(--fg) 6%, transparent), transparent 70%), radial-gradient(44% 34% at 28% 88%, color-mix(in srgb, var(--fg) 5%, transparent), transparent 70%);
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0A0A0A; --surface: #161616; --fg: #FFFFFF; --muted: #A3A3A3; --rule: #2B2B2B;
+    --inverse-bg: #FFFFFF; --inverse-fg: #0A0A0A;
+    --dot: rgba(255, 255, 255, 0.12); --rim: rgba(255, 255, 255, 0.12); --sh-op: 0.7;
+    --shadow-win: 0 0 0 1px rgba(255,255,255,.10), 0 12px 24px -6px rgba(0,0,0,.6), 0 40px 80px -24px rgba(0,0,0,.9);
+    --shadow-card: 0 0 0 1px rgba(255,255,255,.08), 0 18px 40px -12px rgba(0,0,0,.8);
+    --shadow-btn: inset 0 -1px 0 rgba(0,0,0,.12), 0 8px 24px -10px rgba(255,255,255,.25);
+    --glass: linear-gradient(180deg, rgba(255,255,255,.11), rgba(255,255,255,.04));
+    --glass-shadow: inset 0 1px 0 rgba(255,255,255,.2), inset 0 -1px 0 rgba(255,255,255,.05), inset 0 0 0 1px rgba(255,255,255,.09), 0 14px 34px -14px rgba(0,0,0,.85);
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0A0A0A; --surface: #161616; --fg: #FFFFFF; --muted: #A3A3A3; --rule: #2B2B2B;
+  --inverse-bg: #FFFFFF; --inverse-fg: #0A0A0A;
+  --dot: rgba(255, 255, 255, 0.12); --rim: rgba(255, 255, 255, 0.12); --sh-op: 0.7;
+  --shadow-win: 0 0 0 1px rgba(255,255,255,.10), 0 12px 24px -6px rgba(0,0,0,.6), 0 40px 80px -24px rgba(0,0,0,.9);
+  --shadow-card: 0 0 0 1px rgba(255,255,255,.08), 0 18px 40px -12px rgba(0,0,0,.8);
+  --shadow-btn: inset 0 -1px 0 rgba(0,0,0,.12), 0 8px 24px -10px rgba(255,255,255,.25);
+  --glass: linear-gradient(180deg, rgba(255,255,255,.11), rgba(255,255,255,.04));
+  --glass-shadow: inset 0 1px 0 rgba(255,255,255,.2), inset 0 -1px 0 rgba(255,255,255,.05), inset 0 0 0 1px rgba(255,255,255,.09), 0 14px 34px -14px rgba(0,0,0,.85);
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: 104px; }
+body {
+  background: var(--bg);
+  color: var(--fg);
+  font: 400 1.0625rem/1.6 var(--body);
+  padding-inline: var(--gutter);
+  overflow-x: clip;
+  -webkit-font-smoothing: antialiased;
+  -webkit-tap-highlight-color: transparent;
+}
+body::before { content: ""; position: fixed; inset: 0; z-index: -1; background: var(--ambient); pointer-events: none; }
+/* Theme swap: everything changes in one frame, revealed by a view transition */
+.no-tx, .no-tx *, .no-tx *::before, .no-tx *::after { transition: none !important; }
+::view-transition-old(root), ::view-transition-new(root) { animation: none; mix-blend-mode: normal; }
+::view-transition-new(root) { z-index: 1; }
+a { color: inherit; }
+:focus-visible { outline: 2px solid var(--fg); outline-offset: 3px; }
+.wrap { max-width: var(--wrap); margin-inline: auto; }
+h1, h2, h3 { font-family: var(--display); text-wrap: balance; margin: 0; }
+p { margin: 0; text-wrap: pretty; }
+.label { font: 500 0.75rem/1.3 var(--mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); }
+.bleed { margin-inline: calc(50% - 50vw); padding-inline: calc(50vw - 50%); }
+.grain { position: relative; isolation: isolate; }
+.grain::after { content: ""; position: absolute; inset: 0; border-radius: inherit; background: var(--grain); opacity: 0.07; pointer-events: none; z-index: 2; }
+
+/* Button */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+  min-height: 48px; padding: 0 22px;
+  font: 600 0.9375rem/1 var(--body);
+  border: 0; border-radius: var(--pill); cursor: pointer; text-decoration: none; user-select: none;
+  background-color: var(--fg); background-image: linear-gradient(180deg, rgba(255,255,255,.16), rgba(255,255,255,0) 60%);
+  color: var(--bg); box-shadow: var(--shadow-btn);
+  transition: transform 160ms var(--ease-out), background-color 200ms ease, color 200ms ease, box-shadow 200ms ease;
+}
+.btn:active { transform: scale(0.97); }
+.btn.ghost { background: var(--glass); color: var(--fg); box-shadow: var(--glass-shadow); -webkit-backdrop-filter: var(--glass-blur); backdrop-filter: var(--glass-blur); }
+.btn.inverse { background: var(--inverse-fg); color: var(--inverse-bg); box-shadow: inset 0 1px 0 color-mix(in srgb, var(--inverse-bg) 10%, transparent), 0 8px 20px -10px color-mix(in srgb, var(--inverse-fg) 50%, transparent); }
+.btn .arr { display: inline-block; transition: transform 200ms var(--ease-out); }
+@media (hover: hover) and (pointer: fine) {
+  .btn:not(.ghost):hover { transform: translateY(-1px); }
+  .btn:not(.ghost):active { transform: scale(0.97); }
+  .btn:hover .arr { transform: translateX(3px); }
+  .btn.ghost:hover { background: var(--fg); color: var(--bg); }
+}
+
+/* Nav */
+.nav { position: sticky; top: calc(env(safe-area-inset-top, 0px) + 12px); z-index: 10; margin-top: 12px; }
+.nav .wrap {
+  display: flex; align-items: center; justify-content: space-between; gap: 16px;
+  padding: 8px 8px 8px 16px; border-radius: var(--pill);
+  background: var(--glass); box-shadow: var(--glass-shadow);
+  -webkit-backdrop-filter: var(--glass-blur); backdrop-filter: var(--glass-blur);
+}
+.mark { display: flex; align-items: center; gap: 10px; min-height: 44px; text-decoration: none; font: 600 1.25rem/1 var(--display); letter-spacing: -0.01em; }
+.mark svg { width: 28px; height: 28px; flex: none; }
+.nav ul { display: flex; gap: 4px; list-style: none; margin: 0; padding: 0; }
+.nav ul a { display: flex; align-items: center; min-height: 44px; padding-inline: 14px; border-radius: var(--pill); text-decoration: none; font-size: 0.9375rem; color: var(--muted); transition: color 150ms ease, background-color 150ms ease; }
+.actions { display: flex; align-items: center; gap: 8px; }
+.theme {
+  width: 48px; height: 48px; display: grid; place-items: center; flex: none;
+  background: color-mix(in srgb, var(--fg) 5%, transparent); color: var(--fg); border: 0; border-radius: 50%; cursor: pointer;
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--fg) 8%, transparent);
+  transition: transform 160ms var(--ease-out), background-color 150ms ease;
+}
+.theme:active { transform: scale(0.95); }
+@media (hover: hover) and (pointer: fine) {
+  .nav ul a:hover { color: var(--fg); background: color-mix(in srgb, var(--fg) 6%, transparent); }
+  .theme:hover { background: color-mix(in srgb, var(--fg) 10%, transparent); }
+}
+.theme svg { width: 20px; height: 20px; }
+
+/* Hero */
+.hero { padding-block: clamp(32px, 6vw, 72px) clamp(48px, 7vw, 88px); }
+.sheet { position: relative; padding: clamp(20px, 4vw, 48px); display: grid; gap: clamp(20px, 3.5vw, 40px); }
+.crop { position: absolute; width: 28px; height: 28px; border: 0 solid var(--fg); z-index: 3; }
+.crop.tl { top: 0; left: 0; border-top-width: 1px; border-left-width: 1px; border-top-left-radius: 28px; transform-origin: top left; }
+.crop.tr { top: 0; right: 0; border-top-width: 1px; border-right-width: 1px; border-top-right-radius: 28px; transform-origin: top right; }
+.crop.bl { bottom: 0; left: 0; border-bottom-width: 1px; border-left-width: 1px; border-bottom-left-radius: 28px; transform-origin: bottom left; }
+.crop.br { bottom: 0; right: 0; border-bottom-width: 1px; border-right-width: 1px; border-bottom-right-radius: 28px; transform-origin: bottom right; }
+.hero-top { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px 24px; }
+.status { display: inline-flex; align-items: center; gap: 10px; color: var(--fg); }
+.status i { position: relative; width: 8px; height: 8px; border-radius: 50%; background: var(--fg); }
+.status i::after { content: ""; position: absolute; inset: -4px; border-radius: 50%; border: 1px solid var(--fg); opacity: 0; }
+.wordmark {
+  font-size: clamp(4.2rem, 25vw, 20rem);
+  font-weight: 800; line-height: 0.86; letter-spacing: -0.05em;
+  font-variation-settings: "wdth" 100, "opsz" 96;
+  white-space: nowrap; user-select: none; cursor: default;
+  margin-left: -0.04em;
+}
+.wordmark span { display: inline-block; }
+.hero-foot { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 24px 48px; }
+.lede { font-size: clamp(1.2rem, 2.1vw, 1.5rem); line-height: 1.4; max-width: 31ch; }
+.cta { display: flex; flex-wrap: wrap; gap: 12px; }
+
+/* Hero stage: a 1104 x 520 design canvas where 1em = 1 design pixel */
+.stage {
+  container-type: inline-size;
+  aspect-ratio: 1104 / 520; max-width: 100%;
+  background: radial-gradient(var(--dot) 1px, transparent 1.6px) 6px 6px / 2.4% 5.1% , linear-gradient(180deg, var(--surface), color-mix(in srgb, var(--surface) 60%, var(--bg)));
+  position: relative; overflow: hidden; perspective: 1600px;
+  border-radius: var(--r-lg); box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--fg) 6%, transparent);
+}
+.canvas { position: absolute; inset: 0; font-size: calc(100cqw / 1104); transform-style: preserve-3d; }
+.layer { position: absolute; will-change: transform; }
+.win { left: 88em; top: 64em; width: 720em; height: 430em; border-radius: 18em; overflow: hidden; background: var(--bg); box-shadow: var(--shadow-win); }
+.phone { left: 728em; top: 120em; width: 210em; height: 430em; border-radius: 34em; padding: 8em; background: var(--fg); box-shadow: var(--shadow-win); }
+.phone .screen { width: 100%; height: 100%; border-radius: 27em; overflow: hidden; background: var(--bg); }
+.win svg, .phone svg { display: block; width: 100%; height: 100%; }
+.spec {
+  left: 48em; top: 300em; padding: 20em 22em; border-radius: 24em; display: grid; gap: 6em;
+  background: var(--glass); box-shadow: var(--glass-shadow), var(--shadow-card);
+  -webkit-backdrop-filter: var(--glass-blur); backdrop-filter: var(--glass-blur);
+}
+.spec b { font: 800 44em/1 var(--display); letter-spacing: -0.03em; }
+.spec span { font: 400 15em/1.3 var(--body); }
+.spec small { font: 500 12em/1.3 var(--mono); letter-spacing: 0.08em; color: var(--muted); }
+.spec .sw { display: flex; gap: 6em; margin-top: 4em; }
+.spec .sw i { width: 22em; height: 22em; border-radius: 50%; border: 1px solid var(--rule); }
+.f-fg { fill: var(--fg); } .f-bg { fill: var(--bg); } .f-sf { fill: var(--surface); } .f-mu { fill: var(--muted); } .f-ru { fill: var(--rule); }
+
+@media (prefers-reduced-motion: no-preference) {
+  .crop { animation: crop-in 600ms var(--ease-out) both; }
+  .wordmark span { animation: rise 900ms var(--ease-out) both; animation-delay: calc(120ms + var(--i) * 45ms); }
+  .hero-top { animation: fade-up 700ms var(--ease-out) 80ms both; }
+  .hero-foot { animation: fade-up 700ms var(--ease-out) 480ms both; }
+  .stage { animation: fade-up 800ms var(--ease-out) 620ms both; }
+  .win { animation: lift-in 1000ms var(--ease-out) 700ms both; }
+  .phone { animation: lift-in 1000ms var(--ease-out) 820ms both; }
+  .spec { animation: lift-in 1000ms var(--ease-out) 940ms both; }
+  .status i::after { animation: ping 2.4s var(--ease-out) 1.4s infinite; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero-top, .wordmark, .hero-foot, .stage { animation: fade 300ms ease both; }
+  html { scroll-behavior: auto; }
+}
+@keyframes rise { from { opacity: 0; transform: translateY(0.3em); } }
+@keyframes fade-up { from { opacity: 0; transform: translateY(12px); } }
+@keyframes lift-in { from { opacity: 0; transform: translateY(40em); } }
+@keyframes crop-in { from { opacity: 0; transform: scale(0.4); } }
+@keyframes fade { from { opacity: 0; } }
+@keyframes ping { 0% { opacity: .6; transform: scale(.6); } 70%, 100% { opacity: 0; transform: scale(1.8); } }
+
+/* Marquee strip */
+.marquee { border-top: 1px solid var(--rule); padding-block: 28px; overflow: hidden; user-select: none; }
+.track { display: flex; width: max-content; }
+.track span {
+  flex: none; padding-right: 0.35em;
+  font: 800 clamp(3rem, 8vw, 6rem)/1 var(--display); letter-spacing: -0.03em; white-space: nowrap;
+  color: transparent; -webkit-text-stroke: 1.5px var(--fg);
+}
+.track span em { font-style: normal; color: var(--fg); -webkit-text-stroke: 0; }
+@media (prefers-reduced-motion: no-preference) {
+  .track { animation: marquee 48s linear infinite; }
+}
+@media (hover: hover) and (pointer: fine) {
+  .marquee:hover .track { animation-play-state: paused; }
+}
+@keyframes marquee { to { transform: translateX(-50%); } }
+
+/* Sections */
+section { padding-block: clamp(64px, 9vw, 112px); border-top: 1px solid var(--rule); }
+.sec-head { display: grid; grid-template-columns: minmax(0, 360px) minmax(0, 1fr); gap: 16px 48px; margin-bottom: clamp(36px, 5vw, 56px); }
+.sec-head > div { display: grid; gap: 16px; }
+.sec-head h2, .faq-head h2 { font-size: clamp(2.1rem, 4.6vw, 3.5rem); line-height: 1.04; letter-spacing: -0.03em; font-weight: 700; }
+.sec-head p { color: var(--muted); max-width: 46ch; }
+
+/* Work */
+.work { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(36px, 4vw, 48px) 24px; }
+.case { display: grid; gap: 18px; margin: 0; }
+.plate {
+  aspect-ratio: 588 / 420; max-width: 100%; overflow: hidden; border-radius: var(--r-lg);
+  background: radial-gradient(120% 90% at 50% 0%, color-mix(in srgb, var(--surface) 55%, var(--bg)), var(--surface));
+  box-shadow: inset 0 0 0 1px var(--rim);
+  transition: transform 300ms var(--ease-out), box-shadow 300ms var(--ease-out);
+}
+.plate svg { display: block; width: 100%; height: 100%; overflow: visible; transition: transform 500ms var(--ease-out); }
+.ds { flood-color: #000; flood-opacity: var(--sh-op); }
+.ds2 { flood-color: #000; flood-opacity: calc(var(--sh-op) * 0.4); }
+.rim { stroke: var(--rim); stroke-width: 1; }
+@media (hover: hover) and (pointer: fine) {
+  .case:hover .plate { transform: translateY(-4px); box-shadow: inset 0 0 0 1px var(--rim), var(--shadow-card); }
+  .case:hover .plate svg { transform: translateY(-6px) scale(1.02); }
+}
+.case-row { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; }
+.case h3 { font-size: 1.5rem; font-weight: 600; letter-spacing: -0.01em; }
+.case p { color: var(--muted); font-size: 0.95rem; max-width: 52ch; }
+
+/* Services: inverse band */
+#services {
+  background: var(--inverse-bg); color: var(--inverse-fg); border-top: 0;
+  border-radius: var(--r-xl); padding-inline: clamp(16px, 4vw, 56px);
+  box-shadow: inset 0 1px 0 color-mix(in srgb, var(--inverse-fg) 14%, transparent), var(--shadow-card);
+}
+#services .label { color: color-mix(in srgb, var(--inverse-fg) 62%, transparent); }
+#services .sec-head p, #services .svc p { color: color-mix(in srgb, var(--inverse-fg) 66%, transparent); }
+#services .svc .tools { color: var(--inverse-fg); }
+#services + section { border-top: 0; }
+.grid4 { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; list-style: none; margin: 0; padding: 0; }
+.svc, .step { display: flex; flex-direction: column; gap: 12px; padding: clamp(20px, 2.4vw, 28px); border-radius: var(--r-md); }
+.svc { background: var(--glass-inv); box-shadow: var(--glass-inv-shadow); position: relative; z-index: 3; }
+.step { background: var(--glass); box-shadow: var(--glass-shadow); -webkit-backdrop-filter: var(--glass-blur); backdrop-filter: var(--glass-blur); }
+.svc h3, .step h3 { font-size: 1.5rem; font-weight: 600; letter-spacing: -0.01em; }
+.svc p, .step p { color: var(--muted); font-size: 0.95rem; }
+.svc .tools { margin-top: auto; padding-top: 6px; }
+.step .n { font: 800 4.5rem/1 var(--display); letter-spacing: -0.04em; color: transparent; -webkit-text-stroke: 1.2px var(--fg); margin-bottom: 4px; }
+
+/* FAQ */
+.faq-wrap { display: grid; grid-template-columns: minmax(0, 360px) minmax(0, 1fr); gap: 24px 48px; }
+.faq-head { display: grid; gap: 16px; align-content: start; }
+.faq-list { display: grid; gap: 10px; }
+details {
+  border-radius: var(--r-md); padding-inline: clamp(18px, 2.4vw, 28px);
+  background: var(--glass); box-shadow: var(--glass-shadow);
+  -webkit-backdrop-filter: var(--glass-blur); backdrop-filter: var(--glass-blur);
+}
+summary {
+  display: flex; justify-content: space-between; align-items: center; gap: 24px;
+  min-height: 44px; padding-block: 20px; cursor: pointer; list-style: none;
+  font: 600 clamp(1.15rem, 2vw, 1.5rem)/1.2 var(--display); letter-spacing: -0.01em;
+}
+summary::-webkit-details-marker { display: none; }
+.plus { position: relative; width: 32px; height: 32px; flex: none; border: 1px solid var(--rule); border-radius: 50%; transition: transform 200ms var(--ease-out), background-color 200ms ease, border-color 200ms ease; }
+.plus::before, .plus::after { content: ""; position: absolute; background: var(--fg); left: 9px; top: 15px; width: 12px; height: 1.5px; transition: background-color 200ms ease; }
+.plus::after { transform: rotate(90deg); }
+details[open] .plus { transform: rotate(45deg); background: var(--fg); border-color: var(--fg); }
+details[open] .plus::before, details[open] .plus::after { background: var(--bg); }
+@media (hover: hover) and (pointer: fine) {
+  summary:hover .plus { border-color: var(--fg); }
+}
+details p { color: var(--muted); padding-bottom: 22px; max-width: 60ch; }
+/* Smooth open/close where the browser can animate to height: auto */
+@supports (interpolate-size: allow-keywords) {
+  @media (prefers-reduced-motion: no-preference) {
+    :root { interpolate-size: allow-keywords; }
+    details::details-content {
+      block-size: 0; overflow: hidden;
+      transition: block-size 320ms var(--ease-out), content-visibility 320ms allow-discrete;
+    }
+    details[open]::details-content { block-size: auto; }
+    details p { opacity: 0; transform: translateY(-4px); transition: opacity 240ms ease, transform 320ms var(--ease-out); }
+    details[open] p { opacity: 1; transform: none; transition-delay: 60ms; }
+  }
+}
+
+/* Inquiry */
+#contact { border-top: 0; padding-top: 0; }
+.inquiry {
+  background: var(--inverse-bg); color: var(--inverse-fg);
+  padding: clamp(24px, 6vw, 72px); border-radius: var(--r-xl);
+  display: grid; grid-template-columns: minmax(0, 420px) minmax(0, 1fr); gap: 48px 72px;
+  box-shadow: inset 0 1px 0 color-mix(in srgb, var(--inverse-fg) 14%, transparent), var(--shadow-card);
+}
+.inquiry > * { position: relative; z-index: 3; }
+.inquiry .label { color: color-mix(in srgb, var(--inverse-fg) 70%, transparent); }
+.inquiry :focus-visible { outline-color: var(--inverse-fg); }
+.intro { display: flex; flex-direction: column; gap: 20px; }
+.intro h2 { font-size: clamp(2.4rem, 5.4vw, 4rem); line-height: 1; letter-spacing: -0.035em; font-weight: 700; }
+.intro > p { color: color-mix(in srgb, var(--inverse-fg) 75%, transparent); }
+.mail { display: grid; gap: 8px; padding-top: 24px; margin-top: 8px; border-top: 1px solid color-mix(in srgb, var(--inverse-fg) 25%, transparent); }
+.mail-row { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; }
+.mail-row code { font: 600 clamp(1.05rem, 2vw, 1.4rem)/1.3 var(--display); letter-spacing: -0.01em; user-select: all; overflow-wrap: anywhere; min-width: 0; text-decoration: underline; text-underline-offset: 4px; text-decoration-thickness: 1px; }
+.mini {
+  min-height: 36px; padding: 0 14px; font: 600 0.8125rem/1 var(--body); cursor: pointer;
+  color: var(--inverse-fg); border: 0; border-radius: var(--pill);
+  background: var(--glass-inv); box-shadow: var(--glass-inv-shadow);
+  transition: transform 160ms var(--ease-out), box-shadow 150ms ease;
+}
+.mini:active { transform: scale(0.97); }
+@media (hover: hover) and (pointer: fine) {
+  .mini:hover { box-shadow: inset 0 1px 0 color-mix(in srgb, var(--inverse-fg) 24%, transparent), inset 0 0 0 1px color-mix(in srgb, var(--inverse-fg) 40%, transparent); }
+}
+.mini span, .btn span:not(.arr) { display: inline-block; transition: filter 200ms ease, opacity 200ms ease; }
+.swap span { filter: blur(2px); opacity: 0.4; }
+
+form { display: grid; gap: 28px; min-width: 0; }
+.pair { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+.field { display: grid; gap: 8px; min-width: 0; }
+.field input, .field textarea {
+  width: 100%; min-height: 52px; padding: 14px 16px;
+  font: 400 1rem/1.3 var(--body); color: var(--inverse-fg);
+  background: var(--glass-inv);
+  border: 1px solid color-mix(in srgb, var(--inverse-fg) 16%, transparent); border-radius: var(--r-sm);
+  box-shadow: inset 0 1px 0 color-mix(in srgb, var(--inverse-fg) 18%, transparent);
+  transition: border-color 150ms ease, background-color 150ms ease, box-shadow 150ms ease;
+}
+.field textarea { min-height: 120px; resize: vertical; }
+.field input::placeholder, .field textarea::placeholder { color: color-mix(in srgb, var(--inverse-fg) 45%, transparent); }
+@media (hover: hover) and (pointer: fine) {
+  .field input:hover, .field textarea:hover { border-color: color-mix(in srgb, var(--inverse-fg) 60%, transparent); }
+  .chip input:hover + span { border-color: var(--inverse-fg); }
+}
+.field input:focus, .field textarea:focus { outline: none; border-color: var(--inverse-fg); box-shadow: inset 0 0 0 1px var(--inverse-fg), 0 0 0 4px color-mix(in srgb, var(--inverse-fg) 14%, transparent); }
+.field [aria-invalid="true"] { border-color: var(--inverse-fg); border-style: dashed; }
+.err { font-size: 0.875rem; color: var(--inverse-fg); display: flex; gap: 6px; align-items: center; }
+.err::before { content: "!"; display: inline-grid; place-items: center; width: 16px; height: 16px; border-radius: 50%; font: 700 0.6875rem/1 var(--mono); background: var(--inverse-fg); color: var(--inverse-bg); }
+fieldset { border: 0; margin: 0; padding: 0; display: grid; gap: 10px; min-width: 0; }
+legend { padding: 0; margin-bottom: 10px; }
+.chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.chip { position: relative; }
+.chip input { position: absolute; opacity: 0; inset: 0; margin: 0; cursor: pointer; }
+.chip span {
+  display: inline-flex; align-items: center; min-height: 40px; padding: 0 18px;
+  font: 600 0.9375rem/1 var(--body); color: var(--inverse-fg); border-radius: var(--pill);
+  background: var(--glass-inv);
+  border: 1px solid color-mix(in srgb, var(--inverse-fg) 16%, transparent);
+  transition: background-color 150ms ease, color 150ms ease, border-color 150ms ease, transform 160ms var(--ease-out), box-shadow 200ms ease;
+}
+.chip input:active + span { transform: scale(0.97); }
+.chip input:checked + span { background: var(--inverse-fg); color: var(--inverse-bg); border-color: var(--inverse-fg); box-shadow: 0 6px 16px -8px color-mix(in srgb, var(--inverse-fg) 60%, transparent); }
+.chip input:focus-visible + span { outline: 2px solid var(--inverse-fg); outline-offset: 3px; }
+.submit { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 20px; }
+.submit small { font-size: 0.875rem; color: color-mix(in srgb, var(--inverse-fg) 60%, transparent); max-width: 34ch; }
+
+.ready { display: grid; gap: 16px; padding: clamp(20px, 3vw, 28px); border-radius: var(--r-md); background: var(--glass-inv); box-shadow: var(--glass-inv-shadow); }
+.ready h3 { font-size: 1.5rem; font-weight: 600; }
+.ready pre { margin: 0; padding: 16px; max-height: 260px; overflow: auto; white-space: pre-wrap; font: 400 0.875rem/1.55 var(--mono); border-radius: var(--r-sm); background: color-mix(in srgb, var(--inverse-fg) 8%, transparent); }
+.ready .row { display: flex; flex-wrap: wrap; gap: 10px; }
+.ready .btn.ghost { color: var(--inverse-fg); background: var(--glass-inv); box-shadow: var(--glass-inv-shadow); }
+@media (hover: hover) and (pointer: fine) {
+  .ready .btn.ghost:hover { background: var(--inverse-fg); color: var(--inverse-bg); }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .err:not([hidden]) { animation: err-in 220ms var(--ease-out) both; }
+}
+@keyframes err-in { from { opacity: 0; transform: translateY(-4px); } }
+
+footer { padding-block: 32px 48px; border-top: 1px solid var(--rule); margin-inline: calc(var(--gutter) * -1); padding-inline: var(--gutter); }
+footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; }
+footer a { color: var(--fg); text-decoration: none; }
+
+/* Scroll reveal, only where the browser drives it from scroll position */
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .reveal { animation: reveal linear both; animation-timeline: view(); animation-range: entry 0% entry 40%; }
+  }
+}
+@keyframes reveal { from { opacity: 0; transform: translateY(32px); } }
+
+@media (max-width: 960px) {
+  .grid4 { grid-template-columns: repeat(2, minmax(0, 1fr)); row-gap: 40px; }
+  .inquiry, .faq-wrap { grid-template-columns: minmax(0, 1fr); }
+}
+@media (max-width: 680px) {
+  html { scroll-padding-top: 140px; }
+  .nav { top: calc(env(safe-area-inset-top, 0px) + 8px); margin-top: 8px; }
+  .nav .wrap { flex-wrap: wrap; row-gap: 0; padding: 8px 8px 4px 14px; border-radius: var(--r-lg); }
+  .nav ul { order: 3; width: 100%; margin-inline: -8px; overflow-x: auto; scrollbar-width: none; }
+  .nav .btn { min-height: 44px; padding: 0 14px; font-size: 0.875rem; }
+  .theme { width: 44px; height: 44px; }
+  .sec-head, .work, .pair, .grid4 { grid-template-columns: minmax(0, 1fr); }
+  .mark span { display: none; }
+  .spec { display: none; }
+  .stage { aspect-ratio: 1104 / 640; }
+}
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <defs>
+    <filter id="lift" x="-25%" y="-25%" width="150%" height="170%">
+      <feDropShadow class="ds2" dx="0" dy="2" stdDeviation="2"/>
+      <feDropShadow class="ds" dx="0" dy="26" stdDeviation="22"/>
+    </filter>
+  </defs>
+</svg>
+
+<header class="nav">
+  <div class="wrap">
+    <a class="mark" href="#top" aria-label="Japheth Studios, back to top">
+      <svg viewBox="0 0 28 28" aria-hidden="true"><rect width="28" height="28" rx="8" fill="var(--fg)"/><path d="M17 7v10a4.5 4.5 0 0 1-8.6 1.9" fill="none" stroke="var(--bg)" stroke-width="2.8" stroke-linecap="square"/></svg>
+      <span>Japheth Studios</span>
+    </a>
+    <ul>
+      <li><a href="#work">Work</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#process">Process</a></li>
+      <li><a href="#faq">FAQ</a></li>
+    </ul>
+    <div class="actions">
+      <button class="theme" id="theme" type="button" aria-label="Switch to dark theme">
+        <svg id="theme-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+      </button>
+      <a class="btn" href="#contact">Start a project</a>
+    </div>
+  </div>
+</header>
+
+<main id="top" class="wrap">
+  <div class="hero" id="hero">
+    <div class="sheet">
+      <span class="crop tl" aria-hidden="true"></span><span class="crop tr" aria-hidden="true"></span><span class="crop bl" aria-hidden="true"></span><span class="crop br" aria-hidden="true"></span>
+      <div class="hero-top">
+        <span class="label status"><i aria-hidden="true"></i>Booking web &amp; app projects for Q1 2027</span>
+        <span class="label">Websites · Mobile apps · Product design</span>
+      </div>
+      <h1 class="wordmark" id="wordmark" aria-label="Japheth Studios"><span aria-hidden="true" style="--i:0">J</span><span aria-hidden="true" style="--i:1">a</span><span aria-hidden="true" style="--i:2">p</span><span aria-hidden="true" style="--i:3">h</span><span aria-hidden="true" style="--i:4">e</span><span aria-hidden="true" style="--i:5">t</span><span aria-hidden="true" style="--i:6">h</span><span aria-hidden="true" style="--i:7">.</span></h1>
+      <div class="hero-foot">
+        <p class="lede">A small studio that designs and builds websites and apps that people find easy to use and teams find easy to grow.</p>
+        <div class="cta">
+          <a class="btn" href="#contact">Start a project <span class="arr" aria-hidden="true">→</span></a>
+          <a class="btn ghost" href="#work">See the work</a>
+        </div>
+      </div>
+
+      <div class="stage grain" aria-hidden="true">
+        <div class="canvas" id="canvas">
+          <div class="layer win" data-depth="0.5">
+            <svg viewBox="0 0 720 430"><rect class="f-ru" width="720" height="36" opacity=".6"/><circle class="f-fg" cx="20.5" cy="17.5" r="4.5" opacity=".35"/><circle class="f-fg" cx="36.5" cy="17.5" r="4.5" opacity=".35"/><circle class="f-fg" cx="52.5" cy="17.5" r="4.5" opacity=".35"/><rect class="f-bg" x="220" y="12" width="280" height="12" rx="6"/><rect class="f-fg" x="40" y="72" width="90" height="10"/><rect class="f-mu" x="470" y="72" width="46" height="8" opacity=".6"/><rect class="f-mu" x="540" y="72" width="46" height="8" opacity=".6"/><rect class="f-mu" x="610" y="72" width="46" height="8" opacity=".6"/><rect class="f-fg" x="40" y="124" width="420" height="40"/><rect class="f-fg" x="40" y="172" width="320" height="40"/><rect class="f-mu" x="40" y="236" width="360" height="8"/><rect class="f-mu" x="40" y="252" width="280" height="8"/><rect class="f-fg" x="40" y="288" width="130" height="40"/><rect class="f-ru" x="182" y="288" width="110" height="40"/><rect class="f-sf" x="500" y="124" width="180" height="204" rx="4"/><rect class="f-sf" x="40" y="360" width="200" height="70"/><rect class="f-sf" x="260" y="360" width="200" height="70"/><rect class="f-sf" x="480" y="360" width="200" height="70"/></svg>
+          </div>
+          <div class="layer phone" data-depth="1">
+            <div class="screen"><svg viewBox="0 0 194 414"><rect class="f-fg" x="73" y="10" width="48" height="14" rx="7"/><rect class="f-mu" x="18" y="44" width="60" height="8"/><rect class="f-fg" x="18" y="60" width="140" height="24"/><rect class="f-sf" x="18" y="100" width="158" height="110" rx="12"/><rect class="f-fg" x="32" y="172" width="12" height="24" rx="2"/><rect class="f-fg" x="54" y="156" width="12" height="40" rx="2"/><rect class="f-fg" x="76" y="166" width="12" height="30" rx="2"/><rect class="f-fg" x="98" y="138" width="12" height="58" rx="2"/><rect class="f-fg" x="120" y="148" width="12" height="48" rx="2"/><rect class="f-fg" x="142" y="126" width="12" height="70" rx="2"/><rect class="f-sf" x="18" y="224" width="158" height="46" rx="10"/><rect class="f-sf" x="18" y="278" width="158" height="46" rx="10"/><rect class="f-fg" x="18" y="346" width="158" height="46" rx="23"/></svg></div>
+          </div>
+          <div class="layer spec" data-depth="1.4">
+            <b>Aa</b>
+            <span>Bricolage Grotesque</span>
+            <small>800 · 96 / 86</small>
+            <div class="sw"><i style="background:var(--fg)"></i><i style="background:var(--muted)"></i><i style="background:var(--rule)"></i><i style="background:var(--bg)"></i></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<div class="marquee bleed" aria-hidden="true">
+  <div class="track">
+    <span>Websites <em>✦</em> Mobile apps <em>✦</em> Web apps <em>✦</em> Design systems <em>✦</em>&nbsp;</span>
+    <span>Websites <em>✦</em> Mobile apps <em>✦</em> Web apps <em>✦</em> Design systems <em>✦</em>&nbsp;</span>
+  </div>
+</div>
+
+<div class="wrap">
+  <section id="work">
+    <div class="sec-head reveal">
+      <span class="label">Selected work</span>
+      <div>
+        <h2>Recent projects.</h2>
+        <p>Websites, mobile apps and product interfaces, from first wireframe to launch.</p>
+      </div>
+    </div>
+    <div class="work">
+      <article class="case reveal">
+        <div class="plate"><svg viewBox="0 0 588 420" aria-hidden="true"><rect class="f-fg" x="204" y="40" width="180" height="380" rx="28" filter="url(#lift)"/><rect class="f-bg" x="212" y="48" width="164" height="372" rx="22"/><rect class="f-mu" x="228" y="80" width="70" height="8"/><rect class="f-fg" x="228" y="100" width="132" height="22"/><rect class="f-sf" x="228" y="140" width="132" height="92" rx="10"/><rect class="f-fg" x="240" y="190" width="11" height="20" rx="2"/><rect class="f-fg" x="259" y="174" width="11" height="36" rx="2"/><rect class="f-fg" x="278" y="182" width="11" height="28" rx="2"/><rect class="f-fg" x="297" y="158" width="11" height="52" rx="2"/><rect class="f-fg" x="316" y="166" width="11" height="44" rx="2"/><rect class="f-fg" x="335" y="150" width="11" height="60" rx="2"/><rect class="f-sf" x="228" y="248" width="132" height="40" rx="8"/><rect class="f-sf" x="228" y="296" width="132" height="40" rx="8"/><rect class="f-fg" x="228" y="352" width="132" height="44" rx="22"/></svg></div>
+        <div class="case-row"><h3>Ledgerly</h3><span class="label">Mobile app</span></div>
+        <p>A budgeting app for freelancers, built around one five-minute weekly check-in.</p>
+      </article>
+      <article class="case reveal">
+        <div class="plate"><svg viewBox="0 0 588 420" aria-hidden="true"><rect class="f-bg rim" x="48" y="48" width="492" height="420" rx="16" filter="url(#lift)"/><rect class="f-ru" x="48" y="48" width="492" height="32" opacity=".6"/><circle class="f-fg" cx="66.5" cy="63.5" r="4.5" opacity=".35"/><circle class="f-fg" cx="82.5" cy="63.5" r="4.5" opacity=".35"/><circle class="f-fg" cx="98.5" cy="63.5" r="4.5" opacity=".35"/><rect class="f-fg" x="76" y="112" width="300" height="30"/><rect class="f-fg" x="76" y="150" width="220" height="30"/><rect class="f-mu" x="76" y="200" width="260" height="8"/><rect class="f-mu" x="76" y="216" width="200" height="8"/><rect class="f-fg" x="76" y="244" width="110" height="32"/><rect class="f-sf" x="76" y="304" width="436" height="120"/></svg></div>
+        <div class="case-row"><h3>Northseven Coffee</h3><span class="label">Website</span></div>
+        <p>An online shop and café site that loads fast on a phone and is easy for staff to update.</p>
+      </article>
+      <article class="case reveal">
+        <div class="plate"><svg viewBox="0 0 588 420" aria-hidden="true"><rect class="f-bg rim" x="48" y="48" width="492" height="420" rx="16" filter="url(#lift)"/><rect class="f-ru" x="48" y="48" width="492" height="32" opacity=".6"/><circle class="f-fg" cx="66.5" cy="63.5" r="4.5" opacity=".35"/><circle class="f-fg" cx="82.5" cy="63.5" r="4.5" opacity=".35"/><circle class="f-fg" cx="98.5" cy="63.5" r="4.5" opacity=".35"/><rect class="f-sf" x="48" y="80" width="96" height="388"/><rect class="f-fg" x="60" y="100" width="60" height="8"/><rect class="f-mu" x="60" y="128" width="70" height="6" opacity=".6"/><rect class="f-mu" x="60" y="150" width="70" height="6" opacity=".6"/><rect class="f-mu" x="60" y="172" width="70" height="6" opacity=".6"/><rect class="f-mu" x="60" y="194" width="70" height="6" opacity=".6"/><rect class="f-mu" x="60" y="216" width="70" height="6" opacity=".6"/><rect class="f-sf" x="164" y="100" width="110" height="64"/><rect class="f-sf" x="284" y="100" width="110" height="64"/><rect class="f-fg" x="404" y="100" width="116" height="64"/><g class="f-mu" opacity=".5"><rect x="176" y="340" width="20" height="60"/><rect x="210" y="310" width="20" height="90"/><rect x="244" y="330" width="20" height="70"/><rect x="278" y="280" width="20" height="120"/><rect x="312" y="300" width="20" height="100"/><rect x="346" y="250" width="20" height="150"/><rect x="380" y="270" width="20" height="130"/><rect x="414" y="230" width="20" height="170"/><rect x="448" y="260" width="20" height="140"/></g><rect class="f-fg" x="482" y="210" width="20" height="190"/><rect class="f-ru" x="164" y="404" width="356" height="1"/></svg></div>
+        <div class="case-row"><h3>Pulseboard</h3><span class="label">Web app</span></div>
+        <p>An analytics dashboard redesigned around the five reports its customers actually use.</p>
+      </article>
+      <article class="case reveal">
+        <div class="plate"><svg viewBox="0 0 588 420" aria-hidden="true"><rect class="f-bg rim" x="48" y="48" width="492" height="420" rx="16" filter="url(#lift)"/><rect class="f-ru" x="48" y="48" width="492" height="32" opacity=".6"/><circle class="f-fg" cx="66.5" cy="63.5" r="4.5" opacity=".35"/><circle class="f-fg" cx="82.5" cy="63.5" r="4.5" opacity=".35"/><circle class="f-fg" cx="98.5" cy="63.5" r="4.5" opacity=".35"/><rect class="f-fg" x="76" y="104" width="120" height="10"/><rect class="f-fg" x="76" y="132" width="212" height="150"/><rect class="f-mu" x="300" y="132" width="212" height="70"/><rect class="f-sf" x="300" y="212" width="212" height="70"/><rect class="f-sf" x="76" y="294" width="136" height="120"/><rect class="f-mu" x="222" y="294" width="136" height="120"/><rect class="f-fg" x="368" y="294" width="144" height="120"/></svg></div>
+        <div class="case-row"><h3>Ardent Architects</h3><span class="label">Website</span></div>
+        <p>A portfolio site for an architecture practice, built for large images on small screens.</p>
+      </article>
+    </div>
+  </section>
+
+  <section id="services" class="grain">
+    <div class="sec-head reveal">
+      <span class="label">What we make</span>
+      <div>
+        <h2>What we design and build.</h2>
+        <p>One small team takes your product from idea to launch, and you talk directly to the people doing the work.</p>
+      </div>
+    </div>
+    <ul class="grid4">
+      <li class="svc reveal"><span class="label">Web</span><h3>Websites</h3><p>Marketing sites, portfolios and online shops that load fast and are easy to update.</p><span class="label tools">Figma · Webflow · Next.js</span></li>
+      <li class="svc reveal"><span class="label">Mobile</span><h3>Mobile apps</h3><p>iOS and Android apps designed for one-handed use and patchy connections.</p><span class="label tools">Figma · React Native · Expo</span></li>
+      <li class="svc reveal"><span class="label">Product</span><h3>Web apps</h3><p>Dashboards, portals and SaaS products with clear flows and fewer support questions.</p><span class="label tools">Figma · React · Prototyping</span></li>
+      <li class="svc reveal"><span class="label">Systems</span><h3>Design systems</h3><p>Components, tokens and guidelines so your team can ship new screens consistently.</p><span class="label tools">Figma libraries · Storybook</span></li>
+    </ul>
+  </section>
+
+  <section id="process">
+    <div class="sec-head reveal">
+      <span class="label">How it works</span>
+      <div>
+        <h2>From brief to launch in about ten weeks.</h2>
+        <p>A focused website can ship in four to six weeks. An app or web app usually takes eight to twelve.</p>
+      </div>
+    </div>
+    <ol class="grid4">
+      <li class="step reveal"><span class="n" aria-hidden="true">01</span><h3>Discover</h3><p>A kickoff call and short research to learn your users, goals and competitors.</p><span class="label">Weeks 1–2</span></li>
+      <li class="step reveal"><span class="n" aria-hidden="true">02</span><h3>Design</h3><p>Wireframes, then full screens and a clickable prototype you can test with real people.</p><span class="label">Weeks 3–6</span></li>
+      <li class="step reveal"><span class="n" aria-hidden="true">03</span><h3>Build</h3><p>We build it, or hand clean, documented Figma files to your developers.</p><span class="label">Weeks 6–9</span></li>
+      <li class="step reveal"><span class="n" aria-hidden="true">04</span><h3>Launch</h3><p>Go-live, analytics setup and a handover session with your team.</p><span class="label">Week 10</span></li>
+    </ol>
+  </section>
+
+  <section id="faq">
+    <div class="faq-wrap">
+      <div class="faq-head">
+        <span class="label">Questions</span>
+        <h2>Questions clients ask.</h2>
+      </div>
+      <div class="faq-list">
+        <details open><summary>How much does a project cost?<span class="plus" aria-hidden="true"></span></summary><p>Every project gets a fixed quote after a short call. Pick a budget range in the form below and we'll suggest a scope that fits it.</p></details>
+        <details><summary>How long does it take?<span class="plus" aria-hidden="true"></span></summary><p>A website usually takes four to six weeks. A mobile app or web app usually takes eight to twelve.</p></details>
+        <details><summary>Do you build it too, or only design?<span class="plus" aria-hidden="true"></span></summary><p>Both. We can design and build the whole product, or design it in Figma and hand it to your developers.</p></details>
+        <details><summary>Can you redesign my existing site or app?<span class="plus" aria-hidden="true"></span></summary><p>Yes. We start with a short review of what works today, so the redesign keeps what your users already rely on.</p></details>
+        <details><summary>What do you need from me to start?<span class="plus" aria-hidden="true"></span></summary><p>A short description of the project, your timeline and a rough budget. The form below asks for all three.</p></details>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="inquiry grain">
+      <div class="intro">
+        <span class="label">Start a project</span>
+        <h2>Tell us what you're building.</h2>
+        <p>Fill in the form and we'll reply within two working days with next steps and a rough plan.</p>
+        <div class="mail">
+          <span class="label">Prefer email?</span>
+          <div class="mail-row">
+            <code id="email">japheth.digital@gmail.com</code>
+            <button class="mini" id="copy-email" type="button"><span>Copy</span></button>
+          </div>
+        </div>
+      </div>
+
+      <div id="form-area">
+        <form id="inquiry" novalidate>
+          <div class="pair">
+            <div class="field">
+              <label class="label" for="f-name">Your name</label>
+              <input id="f-name" name="name" autocomplete="name" placeholder="Ada Obi" aria-describedby="e-name">
+              <span class="err" id="e-name" hidden>Enter your name so we know who to reply to.</span>
+            </div>
+            <div class="field">
+              <label class="label" for="f-email">Email</label>
+              <input id="f-email" name="email" type="email" autocomplete="email" inputmode="email" placeholder="you@company.com" aria-describedby="e-email">
+              <span class="err" id="e-email" hidden>Enter an email address like name@company.com.</span>
+            </div>
+          </div>
+          <fieldset>
+            <legend class="label">What do you need?</legend>
+            <div class="chips">
+              <label class="chip"><input type="radio" name="type" id="t-web" value="Website" checked><span>Website</span></label>
+              <label class="chip"><input type="radio" name="type" id="t-mobile" value="Mobile app"><span>Mobile app</span></label>
+              <label class="chip"><input type="radio" name="type" id="t-webapp" value="Web app"><span>Web app</span></label>
+              <label class="chip"><input type="radio" name="type" id="t-redesign" value="Redesign"><span>Redesign</span></label>
+              <label class="chip"><input type="radio" name="type" id="t-system" value="Design system"><span>Design system</span></label>
+            </div>
+          </fieldset>
+          <fieldset>
+            <legend class="label">Budget (USD)</legend>
+            <div class="chips">
+              <label class="chip"><input type="radio" name="budget" id="b-1" value="Under $5k"><span>Under $5k</span></label>
+              <label class="chip"><input type="radio" name="budget" id="b-2" value="$5k–$15k" checked><span>$5k–$15k</span></label>
+              <label class="chip"><input type="radio" name="budget" id="b-3" value="$15k–$40k"><span>$15k–$40k</span></label>
+              <label class="chip"><input type="radio" name="budget" id="b-4" value="$40k+"><span>$40k+</span></label>
+              <label class="chip"><input type="radio" name="budget" id="b-5" value="Not sure yet"><span>Not sure yet</span></label>
+            </div>
+          </fieldset>
+          <div class="field">
+            <label class="label" for="f-when">When do you want to launch?</label>
+            <input id="f-when" name="when" placeholder="e.g. March 2027">
+          </div>
+          <div class="field">
+            <label class="label" for="f-msg">Tell us about the project</label>
+            <textarea id="f-msg" name="message" placeholder="What it is, who it's for, and anything you already have" aria-describedby="e-msg"></textarea>
+            <span class="err" id="e-msg" hidden>Add a sentence or two about the project.</span>
+          </div>
+          <div class="submit">
+            <button class="btn inverse" type="submit">Review inquiry <span class="arr" aria-hidden="true">→</span></button>
+            <small>Next you can copy your inquiry or open it in your email app.</small>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+</div>
+
+<footer>
+  <div class="wrap">
+    <span class="label">© 2026 Japheth Studios</span>
+    <span class="label">Websites · Mobile apps · Product design</span>
+    <a class="label" href="#top">Back to top ↑</a>
+  </div>
+</footer>
+
+<script>
+(() => {
+  const store = {
+    get(k) { try { return localStorage.getItem(k); } catch (e) { return null; } },
+    set(k, v) { try { localStorage.setItem(k, v); } catch (e) {} },
+  };
+  const root = document.documentElement;
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const finePointer = matchMedia('(hover: hover) and (pointer: fine)').matches;
+
+  // Theme toggle: follows the system until the visitor picks one
+  const btn = document.getElementById('theme');
+  const icon = document.getElementById('theme-icon');
+  const mq = matchMedia('(prefers-color-scheme: dark)');
+  const MOON = '<path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/>';
+  const SUN = '<circle cx="12" cy="12" r="4.2"/><path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M4.9 19.1l1.8-1.8M17.3 6.7l1.8-1.8"/>';
+  const isDark = () => root.dataset.theme ? root.dataset.theme === 'dark' : mq.matches;
+  const themeMetas = document.querySelectorAll('meta[name="theme-color"]');
+  const paintIcon = () => {
+    const dark = isDark();
+    icon.innerHTML = dark ? SUN : MOON;
+    btn.setAttribute('aria-label', dark ? 'Switch to light theme' : 'Switch to dark theme');
+    if (root.dataset.theme) themeMetas.forEach(m => m.content = dark ? '#0A0A0A' : '#FFFFFF');
+  };
+  const EASE = 'cubic-bezier(0.23, 1, 0.32, 1)';
+  const saved = store.get('js-theme');
+  if (saved === 'dark' || saved === 'light') root.dataset.theme = saved;
+  paintIcon();
+  mq.addEventListener?.('change', paintIcon);
+  btn.addEventListener('click', () => {
+    const next = isDark() ? 'light' : 'dark';
+    const apply = () => {
+      root.classList.add('no-tx');
+      root.dataset.theme = next;
+      paintIcon();
+      root.offsetWidth; // commit the new colors before transitions come back
+      root.classList.remove('no-tx');
+    };
+    store.set('js-theme', next);
+    if (reduce || !document.startViewTransition) { apply(); return; }
+    // Reveal the new theme in a circle growing out of the toggle
+    const r = btn.getBoundingClientRect();
+    const x = r.left + r.width / 2, y = r.top + r.height / 2;
+    const radius = Math.hypot(Math.max(x, innerWidth - x), Math.max(y, innerHeight - y));
+    document.startViewTransition(apply).ready.then(() => {
+      root.animate({ clipPath: [`circle(0px at ${x}px ${y}px)`, `circle(${radius}px at ${x}px ${y}px)`] },
+        { duration: 520, easing: EASE, pseudoElement: '::view-transition-new(root)' });
+    }, () => {});
+  });
+
+  // Copy helper with blurred label swap
+  const copyText = (button, text, doneLabel, restLabel, selectEl) => {
+    const lbl = button.querySelector('span');
+    const say = t => { button.classList.add('swap'); setTimeout(() => { lbl.textContent = t; button.classList.remove('swap'); }, 120); };
+    const fallback = () => {
+      if (selectEl) { const r = document.createRange(); r.selectNodeContents(selectEl); const s = getSelection(); s.removeAllRanges(); s.addRange(r); }
+      say('Press Ctrl+C');
+    };
+    try { navigator.clipboard.writeText(text).then(() => { say(doneLabel); setTimeout(() => say(restLabel), 1800); }, fallback); } catch (e) { fallback(); }
+  };
+  const emailEl = document.getElementById('email');
+  document.getElementById('copy-email').addEventListener('click', e => copyText(e.currentTarget, emailEl.textContent, 'Copied', 'Copy', emailEl));
+
+  // Inquiry form: validate, then build a ready-to-send message
+  const form = document.getElementById('inquiry');
+  const area = document.getElementById('form-area');
+  const DRAFT = 'js-inquiry-draft';
+  try {
+    const d = JSON.parse(store.get(DRAFT) || 'null');
+    if (d) {
+      ['name', 'email', 'when', 'message'].forEach(k => { if (d[k]) form.elements[k].value = d[k]; });
+      ['type', 'budget'].forEach(k => { const r = d[k] && form.querySelector(`input[name="${k}"][value="${CSS.escape(d[k])}"]`); if (r) r.checked = true; });
+    }
+  } catch (e) {}
+  const read = () => Object.fromEntries(['name', 'email', 'type', 'budget', 'when', 'message'].map(k => [k, (form.elements[k].value || '').trim()]));
+  form.addEventListener('input', () => store.set(DRAFT, JSON.stringify(read())));
+  const show = (id, bad) => { const input = form.querySelector(`[aria-describedby="${id}"]`); document.getElementById(id).hidden = !bad; input.setAttribute('aria-invalid', bad ? 'true' : 'false'); };
+  form.addEventListener('submit', e => {
+    e.preventDefault();
+    if (area.querySelector('.ready')) return;
+    const v = read();
+    const bad = { 'e-name': !v.name, 'e-email': !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v.email), 'e-msg': v.message.length < 10 };
+    Object.entries(bad).forEach(([id, b]) => show(id, b));
+    const first = Object.keys(bad).find(k => bad[k]);
+    if (first) { form.querySelector(`[aria-describedby="${first}"]`).focus(); return; }
+    const subject = `New project inquiry: ${v.type} (${v.budget})`;
+    const body = `Hi Japheth Studios,\n\n${v.message}\n\nProject type: ${v.type}\nBudget: ${v.budget}\nLaunch: ${v.when || 'Flexible'}\n\n${v.name}\n${v.email}`;
+    const to = emailEl.textContent.trim();
+    const panel = document.createElement('div');
+    panel.className = 'ready';
+    panel.setAttribute('role', 'status');
+    panel.innerHTML = `
+      <span class="label">Your inquiry is ready</span>
+      <h3 tabindex="-1"></h3>
+      <pre></pre>
+      <div class="row">
+        <button class="btn inverse" type="button" data-act="copy"><span>Copy inquiry</span></button>
+        <a class="btn ghost" data-act="mail">Open in email app</a>
+        <button class="mini" type="button" data-act="edit"><span>Edit answers</span></button>
+      </div>
+      <small class="label" style="text-transform:none;letter-spacing:0"></small>`;
+    panel.querySelector('h3').textContent = `Send it to ${to}`;
+    panel.querySelector('pre').textContent = `To: ${to}\nSubject: ${subject}\n\n${body}`;
+    panel.querySelector('small').textContent = `If your email app doesn't open, copy the inquiry and paste it into a new email to ${to}.`;
+    panel.querySelector('[data-act="mail"]').href = `mailto:${to}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    panel.querySelector('[data-act="copy"]').addEventListener('click', ev => copyText(ev.currentTarget, `Subject: ${subject}\n\n${body}`, 'Copied', 'Copy inquiry', panel.querySelector('pre')));
+    panel.querySelector('[data-act="edit"]').addEventListener('click', () => swap(panel, form, () => { panel.remove(); form.elements.name.focus(); }));
+    swap(form, panel, () => panel.querySelector('h3').focus());
+  });
+  // Crossfade between the form and the ready panel
+  const swap = (from, to, done) => {
+    const show = () => {
+      from.hidden = true;
+      if (!to.isConnected) area.appendChild(to);
+      to.hidden = false;
+      if (!reduce) to.animate([{ opacity: 0, transform: 'translateY(12px)' }, { opacity: 1, transform: 'none' }], { duration: 320, easing: EASE });
+      done();
+    };
+    if (reduce) { show(); return; }
+    from.animate([{ opacity: 1 }, { opacity: 0, transform: 'translateY(-8px)' }], { duration: 180, easing: 'ease-in' }).finished.then(show, show);
+  };
+
+  if (reduce || !finePointer) return;
+
+  // Spring helper for decorative pointer motion
+  const spring = (onFrame) => {
+    let x = 0, y = 0, vx = 0, vy = 0, gx = 0, gy = 0, raf = 0;
+    const tick = () => {
+      vx = (vx + (gx - x) * 0.08) * 0.78; vy = (vy + (gy - y) * 0.08) * 0.78;
+      x += vx; y += vy; onFrame(x, y);
+      raf = (Math.abs(vx) + Math.abs(vy) + Math.abs(gx - x) + Math.abs(gy - y) > 0.0005) ? requestAnimationFrame(tick) : 0;
+    };
+    return (nx, ny) => { gx = nx; gy = ny; if (!raf) raf = requestAnimationFrame(tick); };
+  };
+
+  // Hero stage: tilt and parallax layers toward the pointer
+  const hero = document.getElementById('hero');
+  const canvas = document.getElementById('canvas');
+  const layers = [...canvas.querySelectorAll('.layer')].map(el => ({ el, d: +el.dataset.depth }));
+  const moveStage = spring((x, y) => {
+    canvas.style.transform = `rotateX(${(-y * 4).toFixed(2)}deg) rotateY(${(x * 5).toFixed(2)}deg)`;
+    for (const l of layers) l.el.style.translate = `${(x * 14 * l.d).toFixed(1)}em ${(y * 10 * l.d).toFixed(1)}em`;
+  });
+  hero.addEventListener('pointermove', e => { const r = hero.getBoundingClientRect(); moveStage((e.clientX - r.left) / r.width - 0.5, (e.clientY - r.top) / r.height - 0.5); });
+  hero.addEventListener('pointerleave', () => moveStage(0, 0));
+
+  // Wordmark: letters near the pointer get lighter and narrower
+  const wm = document.getElementById('wordmark');
+  const letters = [...wm.querySelectorAll('span')].slice(0, 7).map(el => ({ el, t: 0, v: 0, goal: 0, cx: 0 }));
+  let raf = 0;
+  // Centres are measured at rest only, so the width change the effect causes doesn't feed back into it
+  let stale = true;
+  const measure = () => {
+    if (!stale || raf || letters.some(l => l.t > 0.001)) return;
+    letters.forEach(l => { const r = l.el.getBoundingClientRect(); l.cx = r.left + r.width / 2; });
+    stale = false;
+  };
+  addEventListener('resize', () => { stale = true; }, { passive: true });
+  document.fonts?.ready.then(() => { stale = true; });
+  const tick = () => {
+    let moving = false;
+    for (const l of letters) {
+      l.v = (l.v + (l.goal - l.t) * 0.12) * 0.74; l.t += l.v;
+      if (Math.abs(l.v) > 0.001 || Math.abs(l.goal - l.t) > 0.001) moving = true;
+      l.el.style.fontVariationSettings = `"wght" ${Math.round(800 - 600 * l.t)}, "wdth" ${(100 - 22 * l.t).toFixed(1)}, "opsz" 96`;
+    }
+    raf = moving ? requestAnimationFrame(tick) : 0;
+  };
+  const kick = () => { if (!raf) raf = requestAnimationFrame(tick); };
+  wm.addEventListener('pointerenter', measure);
+  wm.addEventListener('pointermove', e => { const span = wm.offsetWidth; for (const l of letters) l.goal = Math.max(0, 1 - Math.abs(e.clientX - l.cx) / span * 3.2); kick(); });
+  wm.addEventListener('pointerleave', () => { letters.forEach(l => l.goal = 0); kick(); });
+})();
+</script>
+</body>
+</html>
